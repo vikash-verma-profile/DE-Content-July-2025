@@ -1,0 +1,15 @@
+# Default (Engineering)
+python etl.py
+
+# Filter HR department
+python etl.py --department HR
+
+# Filter Sales department
+python etl.py --department Sales
+
+Challenge commands
+
+python etl.py                       # Filters Engineering (default)
+python etl.py --department HR       # Filters HR
+python etl.py --department Sales    # Filters Sales
+

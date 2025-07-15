@@ -1,0 +1,14 @@
+Objective: Build a small CLI-based ETL script that reads, processes, and writes CSV data.
+
+Tasks:
+
+Read employees.csv from data/ directory.
+
+Clean nulls from salary and convert them to integers.
+
+Filter only employees from Engineering department.
+
+Save the result as engineering_employees.csv in output/.
+
+Challenge:
+Add argparse support to allow filtering by department via CLI.
