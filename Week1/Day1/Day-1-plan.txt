@@ -1,0 +1,12 @@
+| Time Slot     | Activity                                         |
+| ------------- | ------------------------------------------------ |
+| 10:00 – 11:00 | Orientation, Program Contract, Kanban Intro      |
+| 11:00 – 12:00 | **Lab 1**: Git Install + GPG Signed Commit Setup |
+| 12:00 – 12:15 | **Tea Break**                                    |
+| 12:15 – 1:15  | **Lab 2**: Git Branching + Pre-Commit Hooks      |
+| 1:15 – 2:15   | **Lunch Break**                                  |
+| 2:15 – 3:15   | Bash + Linux CLI Primer (grep, sed, pipes)       |
+| 3:15 – 3:30   | **Tea Break**                                    |
+| 3:30 – 4:30   | **Lab 3**: Azure Storage Blob via CLI            |
+| 4:30 – 5:30   | **Lab 4**: Databricks Token + REST API Calls     |
+| 5:30 – 6:00   | Summary, Q\&A, Troubleshooting Session           |

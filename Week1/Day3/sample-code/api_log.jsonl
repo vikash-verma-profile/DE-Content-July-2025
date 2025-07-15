@@ -1,0 +1,3 @@
+{"timestamp": "2025-07-15T12:20:30.123456", "endpoint": "/posts", "status_code": 200, "records_fetched": 100}
+{"timestamp": "2025-07-15T12:20:30.234567", "endpoint": "/comments", "status_code": 200, "records_fetched": 500}
+{"timestamp": "2025-07-15T12:20:30.345678", "endpoint": "/users", "status_code": 200, "records_fetched": 10}

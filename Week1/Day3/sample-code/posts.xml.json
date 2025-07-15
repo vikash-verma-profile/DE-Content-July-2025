@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Intro to Python",
+    "author": "Jane Doe",
+    "pubDate": "2023-07-01"
+  },
+  {
+    "title": "Data Engineering 101",
+    "author": "John Smith",
+    "pubDate": "2023-07-02"
+  }
+]
