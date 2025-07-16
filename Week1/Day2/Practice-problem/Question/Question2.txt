@@ -1,0 +1,26 @@
+Problem: "Secure the Function"
+Objective:
+Write a decorator called @require_auth that checks whether the user is authenticated (simulated with a global variable), and prevents access to the function if not authenticated.
+Requirements:
+Create a global variable AUTHENTICATED = False
+Write a decorator @require_auth that:
+Checks if AUTHENTICATED is True
+If not, print: "Access denied. Please log in." and do not call the function.
+If authenticated, allow the function to run.
+Create two functions:
+
+view_dashboard() → prints "Welcome to your dashboard!"
+
+logout() → sets AUTHENTICATED = False and prints "Logged out."
+
+Write a function login() that sets AUTHENTICATED = True and prints "Logged in."
+
+Simulate the following flow in your main block:
+
+python
+
+view_dashboard()   # should print Access denied
+login()
+view_dashboard()   # should print dashboard message
+logout()
+view_dashboard()   # should print Access denied again

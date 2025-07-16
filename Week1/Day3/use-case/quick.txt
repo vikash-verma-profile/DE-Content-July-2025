@@ -1,0 +1,6 @@
+| Task                         | Suggestion                                              |
+| ---------------------------- | ------------------------------------------------------- |
+| Execution time               | Use `EXPLAIN ANALYZE` or MySQL Workbench execution time |
+| Compare with/without indexes | `DROP INDEX` temporarily to measure impact              |
+| Benchmark inserts            | `SHOW PROFILE FOR QUERY n`                              |
+| Disk I/O                     | Monitor in InnoDB buffer pool / query cache             |
