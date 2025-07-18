@@ -1,0 +1,11 @@
+questionTitle,questionType,questionDescription,correctOptionNumbers,positiveMarks,negativeMarks,questionAnswerExplanation,questionOption1,questionOption2,questionOption3,questionOption4,questionOption5,questionOption6,questionOption7,questionOption8
+Question 1,single-correct,"In Spark, what runs tasks on data partitions?",1,1,0,Executors process tasks on data.,Executor,Driver,Cluster,Node Manager,,,,
+Question 2,single-correct,Which is the preferred API for performance in Spark?,2,1,0,DataFrame API is optimized and user-friendly.,RDD,DataFrame,SQLContext,Pandas UDF,,,,
+Question 3,single-correct,What is the use of `.cache()` in Spark?,2,1,0,It stores the DataFrame in memory for reuse.,Write to disk,Keep in memory,Stream updates,Reduce join,,,,
+Question 4,single-correct,Which Spark UI tab shows the DAG and job stages?,3,1,0,Stages tab shows DAG visualization.,Executors,Environment,Stages,Storage,,,,
+Question 5,single-correct,Why use `broadcast()` in Spark joins?,1,1,0,It avoids data shuffle by sending small table to all nodes.,Reduce shuffle,Increase memory,Create RDDs,Compress data,,,,
+Question 6,single-correct,What does a checkpoint in Spark provide?,3,1,0,It truncates the lineage and helps recovery.,Optimizes SQL,Caches files,Breaks lineage,Adds security,,,,
+Question 7,single-correct,Which format supports partition discovery in Spark?,1,1,0,Parquet is commonly used with partitioned folders.,Parquet,CSV,JSON,Delta only,,,,
+Question 8,single-correct,What does repartitioning do in Spark?,3,1,0,It increases or decreases number of data partitions.,Splits joins,Creates views,Changes number of partitions,Removes partitions,,,,
+Question 9,single-correct,Which API is used to read external data sources in Spark?,2,1,0,read.format() lets you load from various external sources.,toDF(),read.format(),createDataFrame(),csv.read(),,,,
+Question 10,single-correct,Why prefer DataFrames over RDDs in Spark?,2,1,0,DataFrames enable Catalyst optimizations.,More functional,Faster due to Catalyst,Better Python support,Use less RAM,,,,

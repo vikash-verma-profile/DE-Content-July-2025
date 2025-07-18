@@ -1,0 +1,11 @@
+questionTitle,questionType,questionDescription,correctOptionNumbers,positiveMarks,negativeMarks,questionAnswerExplanation,questionOption1,questionOption2,questionOption3,questionOption4
+Question 1,single-correct,In a requirements interview, what is a best practice?,3,1,0,Asking open-ended questions helps elicit detailed functional needs.,Provide solutions upfront,Focus only on UI,Ask open-ended questions,Skip clarifying questions
+Question 2,single-correct,What does ER cardinality define?,1,1,0,Cardinality defines the number of instances that can participate in a relationship.,Number of related entities,Entity name format,Data types,Join types
+Question 3,single-correct,What does optionality mean in ER modeling?,4,1,0,Optionality indicates whether a relationship is mandatory or optional.,Max rows allowed,Data range check,Foreign key constraint,Presence requirement
+Question 4,single-correct,Which is an example of atomic attribute?,2,1,0,Atomic attributes cannot be split further — “email” is atomic.,Full name,Email,Address,DateTime
+Question 5,single-correct,Why do we normalize to BCNF?,2,1,0,BCNF removes redundancy by ensuring every determinant is a candidate key.,Speed up joins,Eliminate redundancy,Improve UI,Reduce key length
+Question 6,single-correct,What does the Crow’s Foot notation depict?,1,1,0,Crow’s Foot visually represents cardinality and relationships.,Entity relationships,File sizes,Stored procedures,ERD themes
+Question 7,single-correct,Which is a good naming standard for primary keys?,3,1,0,Naming keys with entity prefix helps clarity and avoids clashes.,Name it "id" everywhere,Use UUIDs only,Use entity name + ID (e.g., customer_id),Avoid using IDs
+Question 8,single-correct,Why is versioning ERDs in Git beneficial?,1,1,0,Git helps track model changes and supports collaboration.,Track changes over time,Better color formatting,Faster joins,Better performance
+Question 9,single-correct,What should be avoided during a requirements drill?,4,1,0,Leading questions bias the user and can lead to incorrect assumptions.,Ask real-life examples,Clarify acronyms,Confirm scope,Use leading questions
+Question 10,single-correct,What tool feature is common in Crow-foot ERD software?,2,1,0,ERD tools like dbdiagram.io support visual modeling and export.,Load test data,Visual relationship drawing,Direct table joins,Runtime query execution

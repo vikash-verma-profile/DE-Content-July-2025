@@ -1,0 +1,11 @@
+questionTitle,questionType,questionDescription,correctOptionNumbers,positiveMarks,negativeMarks,questionAnswerExplanation,questionOption1,questionOption2,questionOption3,questionOption4
+Question 1,single-correct,What is stored in a Hub table in Data Vault?,1,1,0,Hubs store unique business keys and metadata.,Business keys,Relationships,Descriptive data,Audit logs
+Question 2,single-correct,What is the purpose of a Link table in Data Vault?,2,1,0,Link tables capture relationships between business keys.,Descriptive attributes,Relationships,Historical data,Hash collisions
+Question 3,single-correct,What do Satellites in DV2.0 primarily store?,3,1,0,Satellites contain historical context and descriptive attributes.,Only keys,Joins between hubs,Contextual/historical data,ETL metadata
+Question 4,single-correct,What is a key benefit of using hash keys in DV2.0?,1,1,0,Hash keys provide fixed-length keys suitable for distributed joins.,Fixed-length joins,Human readability,Faster sorting,Reduced data quality issues
+Question 5,single-correct,What is the main risk when using hash keys?,3,1,0,Hash collisions can cause multiple distinct values to appear as one.,Large joins,Date mismatches,Hash collisions,Slow CDC detection
+Question 6,single-correct,What does a PIT (Point-in-Time) table enable?,1,1,0,PIT tables improve join performance for time-based querying.,Efficient snapshot joins,ETL parallelism,Audit logging,Multi-active records
+Question 7,single-correct,What is the role of Bridge tables in DV?,2,1,0,Bridge tables pre-join SATs to simplify querying and reporting.,CDC extraction,Dimension simplification,Query-ready joins,Key generation
+Question 8,single-correct,What does the Raw → Business Vault pipeline include?,4,1,0,It enriches raw vault data with calculated fields, rules, and reference data.,Only ETL metadata,Just PIT/Bridge,Only audit logs,Enrichment and business rules
+Question 9,single-correct,What are DV automation macros used for?,2,1,0,They generate DV-compliant code templates for Hubs, Links, SATs, etc.,Monitoring loads,Code generation,Storing metadata,Job scheduling
+Question 10,single-correct,Why are audit columns required in DV2.0 models?,3,1,0,Audit columns ensure traceability, load tracking, and data lineage.,For debugging SQL,To speed up loads,Track lineage and load metadata,Reduce storage size

@@ -1,0 +1,11 @@
+questionTitle,questionType,questionDescription,correctOptionNumbers,positiveMarks,negativeMarks,questionAnswerExplanation,questionOption1,questionOption2,questionOption3,questionOption4,questionOption5,questionOption6,questionOption7,questionOption8
+Question 1,single-correct,What does Delta Lake add to Parquet to support ACID?,2,1,0,A transaction log supports ACID.,Partitions,Schema,Transaction log,Z-Order,,,,
+Question 2,single-correct,Which command is used to physically clean old data in Delta?,3,1,0,VACUUM removes old files beyond retention period.,ZORDER,REOPTIMIZE,VACUUM,DELETE,,,,
+Question 3,single-correct,What is Z-Ordering in Delta Lake used for?,4,1,0,It improves query performance by colocating related data.,Encrypts data,Compacts data,Cleans logs,Improves data skipping,,,,
+Question 4,single-correct,Which Delta feature allows rollback to previous table version?,3,1,0,Time Travel uses VERSION AS OF.,CACHE,TIMESTAMP DELETE,VERSION AS OF,OPTIMIZE,,,,
+Question 5,single-correct,What does Delta’s schema evolution allow?,1,1,0,Adding new columns to the schema.,Add new columns,Delete rows,Change formats,Remove partitions,,,,
+Question 6,single-correct,How do you enforce GDPR deletion in Delta?,2,1,0,"DELETE based on record ID, then VACUUM.",TRUNCATE,DELETE with predicate,ROLLBACK,EXPLAIN DELETE,,,,
+Question 7,single-correct,Which Delta command optimizes read performance via clustering?,1,1,0,OPTIMIZE ZORDER improves read performance.,OPTIMIZE ZORDER,VACUUM,LOG TRUNCATE,REORG FILES,,,,
+Question 8,single-correct,What are Delta metadata tables used for?,3,1,0,They help in debugging and monitoring operations.,Data read only,Streaming only,Metrics and operations,GC logs,,,,
+Question 9,single-correct,Which Delta table column type auto-generates values?,2,1,0,Generated columns derive values automatically.,Index column,Generated column,Foreign key,Auto part key,,,,
+Question 10,single-correct,What does `DESCRIBE HISTORY` do in Delta Lake?,3,1,0,Shows commit history and operations.,Shows schema,Shows files,Lists keys,Shows commit history,,,,

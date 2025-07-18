@@ -1,0 +1,11 @@
+questionTitle,questionType,questionDescription,correctOptionNumbers,positiveMarks,negativeMarks,questionAnswerExplanation,questionOption1,questionOption2,questionOption3,questionOption4
+Question 1,single-correct,What does the ROW_NUMBER() function do in SQL?,1,1,0,ROW_NUMBER assigns a unique sequential number to rows within a partition.,Assigns sequential number,Returns difference between rows,Aggregates values,Creates new column
+Question 2,single-correct,What does the LAG() window function provide?,2,1,0,LAG provides access to a previous row's value in the same result set.,Fetches next row,Fetches previous row,Calculates rank,Filters rows
+Question 3,single-correct,How does a CTE differ from a derived table?,1,1,0,CTE is reusable and improves readability; derived tables are inline.,CTEs are reusable,Derived tables run faster,CTEs cannot use recursion,CTEs must return scalar values
+Question 4,single-correct,Which keyword removes duplicates when combining queries?,1,1,0,UNION removes duplicates while UNION ALL does not.,UNION,UNION ALL,INTERSECT,JOIN
+Question 5,single-correct,What is a materialized view?,3,1,0,Materialized view stores the result physically and can be refreshed.,A join view,A filtered view,A stored query result,A temporary table
+Question 6,single-correct,What does the MERGE command help achieve?,2,1,0,MERGE performs UPSERT by matching source and target rows.,Only inserts rows,Performs insert/update/delete,Only deletes rows,Merges databases
+Question 7,single-correct,What is a common cause of deadlocks in SQL?,2,1,0,Deadlocks often occur when two transactions hold locks and wait for each other.,Long queries,Conflicting lock order,Incorrect syntax,Too many indexes
+Question 8,single-correct,Which isolation level prevents dirty reads?,3,1,0,Read Committed ensures no dirty reads by waiting for commit.,Read Uncommitted,None,Read Committed,Read Repeatable
+Question 9,single-correct,Which statement about stored procedures is true?,2,1,0,Stored procedures allow reusable logic execution on the DB server.,Only used for selects,Can contain loops and logic,Run automatically on update,Return only integers
+Question 10,single-correct,When does a trigger typically execute?,1,1,0,Triggers fire on events like insert, update, or delete.,On insert/update/delete,Manually triggered,During backups,On transaction commit
