@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Lakehouse Architecture</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: auto;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            padding: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .architecture-diagram {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            min-width: 1400px;
+        }
+
+        .layer {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            min-height: 150px;
+        }
+
+        .component {
+            border: 3px solid #34495e;
+            border-radius: 15px;
+            padding: 20px;
+            background: linear-gradient(145deg, #ffffff, #f8f9fa);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .component:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+            border-color: #3498db;
+        }
+
+        .component::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 15px 15px 0 0;
+        }
+
+        .data-sources {
+            width: 280px;
+            background: linear-gradient(145deg, #e8f5e8, #d5f4d5);
+        }
+
+        .data-sources::before {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+        }
+
+        .automation {
+            width: 350px;
+            background: linear-gradient(145deg, #fff3e0, #ffe0b2);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .automation::before {
+            background: linear-gradient(90deg, #f39c12, #e67e22);
+        }
+
+        .raw-delta-zone {
+            width: 400px;
+            background: linear-gradient(145deg, #e3f2fd, #bbdefb);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .raw-delta-zone::before {
+            background: linear-gradient(90deg, #2196f3, #1976d2);
+        }
+
+        .raw-delta-lake {
+            width: 450px;
+            background: linear-gradient(145deg, #f3e5f5, #e1bee7);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .raw-delta-lake::before {
+            background: linear-gradient(90deg, #9c27b0, #7b1fa2);
+        }
+
+        .business-vault {
+            width: 320px;
+            background: linear-gradient(145deg, #fce4ec, #f8bbd9);
+        }
+
+        .business-vault::before {
+            background: linear-gradient(90deg, #e91e63, #c2185b);
+        }
+
+        .business-reporting {
+            width: 320px;
+            background: linear-gradient(145deg, #e8f5e8, #c8e6c9);
+        }
+
+        .business-reporting::before {
+            background: linear-gradient(90deg, #4caf50, #388e3c);
+        }
+
+        .delta-feature-layer {
+            width: 500px;
+            background: linear-gradient(145deg, #fff8e1, #ffecb3);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .delta-feature-layer::before {
+            background: linear-gradient(90deg, #ff9800, #f57c00);
+        }
+
+        .publishing-layer {
+            width: 300px;
+            background: linear-gradient(145deg, #f1f8e9, #dcedc8);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .publishing-layer::before {
+            background: linear-gradient(90deg, #8bc34a, #689f38);
+        }
+
+        .component-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .component-subtitle {
+            font-size: 0.95em;
+            color: #7f8c8d;
+            margin-bottom: 15px;
+            text-align: center;
+            font-style: italic;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            color: #34495e;
+            font-weight: 500;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .feature-list li::before {
+            content: "●";
+            color: #3498db;
+            position: absolute;
+            left: 0;
+            font-size: 1.2em;
+        }
+
+        .arrow {
+            width: 0;
+            height: 0;
+            border-left: 15px solid transparent;
+            border-right: 15px solid transparent;
+            border-top: 20px solid #34495e;
+            margin: 0 auto;
+            position: relative;
+            animation: pulse 2s infinite;
+        }
+
+        .arrow-horizontal {
+            width: 0;
+            height: 0;
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-left: 20px solid #34495e;
+            margin: auto 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+            100% { opacity: 0.6; transform: scale(1); }
+        }
+
+        .horizontal-flow {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .layer-label {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+            padding: 20px 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flow-description {
+            text-align: center;
+            color: #7f8c8d;
+            font-style: italic;
+            margin: 10px 0;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 1500px) {
+            .architecture-diagram {
+                min-width: auto;
+                transform: scale(0.9);
+                transform-origin: top center;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .architecture-diagram {
+                transform: scale(0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Data Lakehouse Architecture</div>
+        
+        <div class="architecture-diagram">
+            
+            <!-- Data Sources Layer -->
+            <div class="layer">
+                <div class="component data-sources">
+                    <div class="component-title">Data Sources</div>
+                    <ul class="feature-list">
+                        <li>Customer Master</li>
+                        <li>Product Catalog</li>
+                        <li>Sales Orders</li>
+                        <li>Returns & Refunds</li>
+                        <li>External APIs</li>
+                        <li>Real-time Streams</li>
+                        <li>Legacy Systems</li>
+                    </ul>
+                </div>
+                
+                <div class="arrow-horizontal"></div>
+                
+                <div style="flex: 1;">
+                    <div class="component automation">
+                        <div class="component-title">Automation & Pipeline</div>
+                        <div class="component-subtitle">Data Ingestion & Processing</div>
+                        <ul class="feature-list">
+                            <li>Hash Generation</li>
+                            <li>Collision Detection</li>
+                            <li>Incremental Loads</li>
+                            <li>Data Validation</li>
+                            <li>Error Handling</li>
+                            <li>Monitoring & Alerts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-description">↓ Raw data ingestion with automated processing</div>
+            
+            <!-- Raw Delta Lake Zone -->
+            <div class="layer">
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <div class="component raw-delta-zone">
+                        <div class="component-title">Raw Delta Lake Zone</div>
+                        <div class="component-subtitle">Landing & Initial Processing</div>
+                        <ul class="feature-list">
+                            <li>Schema Evolution</li>
+                            <li>Data Merges</li>
+                            <li>Surrogate Keys</li>
+                            <li>Data Lineage Tracking</li>
+                            <li>Version Control</li>
+                            <li>ACID Transactions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-description">↓ Data structuring and organization</div>
+            
+            <!-- Raw Delta Lake -->
+            <div class="layer">
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <div class="component raw-delta-lake">
+                        <div class="component-title">Raw Delta Lake</div>
+                        <div class="component-subtitle">Structured Data Vault</div>
+                        <ul class="feature-list">
+                            <li>Hub Tables (Business Keys)</li>
+                            <li>Link Tables (Relationships)</li>
+                            <li>Satellite Tables (Attributes)</li>
+                            <li>Audit Columns</li>
+                            <li>Hash Keys</li>
+                            <li>Historical Data</li>
+                            <li>Data Quality Metrics</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-description">↓ Business transformation and aggregation</div>
+            
+            <!-- Business Layer -->
+            <div class="layer">
+                <div class="horizontal-flow">
+                    <div class="component business-vault">
+                        <div class="component-title">Business Vault Zone</div>
+                        <div class="component-subtitle">Curated Business Views</div>
+                        <ul class="feature-list">
+                            <li>Zero-copy</li>
+                            <li>Star Schema Views</li>
+                            <li>Business Rules</li>
+                            <li>Calculated Fields</li>
+                            <li>Data Marts</li>
+                            <li>Performance Optimized</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="arrow-horizontal"></div>
+                    
+                    <div class="component business-reporting">
+                        <div class="component-title">Business Reporting / Analytics Zone</div>
+                        <div class="component-subtitle">Analytics & Insights</div>
+                        <ul class="feature-list">
+                            <li>Fact Sales Table</li>
+                            <li>Dimension Tables</li>
+                            <li>BI Tools Integration</li>
+                            <li>Tableau Dashboards</li>
+                            <li>Power BI Reports</li>
+                            <li>Self-Service Analytics</li>
+                            <li>ML/AI Ready Data</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-description">↑ Data publishing and consumption</div>
+            
+            <!-- Publishing Layer -->
+            <div class="layer">
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <div class="component publishing-layer">
+                        <div class="component-title">Publishing Layer</div>
+                        <div class="component-subtitle">Data Distribution</div>
+                        <ul class="feature-list">
+                            <li>Star Schema Views</li>
+                            <li>API Endpoints</li>
+                            <li>Data Catalogs</li>
+                            <li>Security Controls</li>
+                            <li>Access Management</li>
+                            <li>Usage Monitoring</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flow-description">↓ Advanced features and compliance</div>
+            
+            <!-- Delta Lake Feature Layer -->
+            <div class="layer">
+                <div style="flex: 1; display: flex; justify-content: center;">
+                    <div class="component delta-feature-layer">
+                        <div class="component-title">Delta Lake Feature Layer</div>
+                        <div class="component-subtitle">Advanced Capabilities</div>
+                        <ul class="feature-list">
+                            <li>Time Travel Queries</li>
+                            <li>GDPR Delete Compliance</li>
+                            <li>Vacuum & Retention Policies</li>
+                            <li>Data Versioning</li>
+                            <li>Z-Ordering Optimization</li>
+                            <li>Concurrent Read/Write</li>
+                            <li>Schema Enforcement</li>
+                            <li>Change Data Feed</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script>
+        // Add interactive hover effects
+        document.querySelectorAll('.component').forEach(component => {
+            component.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px) scale(1.02)';
+            });
+            
+            component.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click interactions for detailed information
+        document.querySelectorAll('.component').forEach(component => {
+            component.addEventListener('click', function() {
+                const title = this.querySelector('.component-title').textContent;
+                
+                // Create a simple modal-like effect
+                const originalBorder = this.style.borderColor;
+                this.style.borderColor = '#e74c3c';
+                this.style.borderWidth = '4px';
+                
+                setTimeout(() => {
+                    this.style.borderColor = originalBorder;
+                    this.style.borderWidth = '3px';
+                }, 1000);
+                
+                console.log(`Clicked on: ${title}`);
+            });
+        });
+
+        // Animate arrows on page load
+        window.addEventListener('load', function() {
+            const arrows = document.querySelectorAll('.arrow, .arrow-horizontal');
+            arrows.forEach((arrow, index) => {
+                arrow.style.animationDelay = `${index * 0.3}s`;
+            });
+        });
+    </script>
+</body>
+</html>
