@@ -1,0 +1,15 @@
+| Feature / Aspect          | **ARM Templates** (Azure Resource Manager) | **Terraform** (by HashiCorp)                            |
+| ------------------------- | ------------------------------------------ | ------------------------------------------------------- |
+| **Ownership**             | Microsoft (Azure-native)                   | HashiCorp (cloud-agnostic)                              |
+| **Language**              | JSON or Bicep (Azure DSL)                  | HCL (HashiCorp Configuration Language)                  |
+| **Supported Clouds**      | Azure only                                 | Multi-cloud (Azure, AWS, GCP, etc.)                     |
+| **Tooling**               | Azure Portal, Azure CLI, PowerShell        | Terraform CLI, IDE plugins, Terraform Cloud             |
+| **Modularity & Reuse**    | Limited in JSON, better in Bicep           | Strong (modules, variables, workspaces)                 |
+| **State Management**      | No external state file; Azure handles it   | Explicit state files stored locally or remotely         |
+| **Learning Curve**        | Steeper with JSON; easier with Bicep       | Easier and readable syntax (HCL)                        |
+| **Change Preview**        | What-if (via CLI/PowerShell)               | `terraform plan` (clear and detailed)                   |
+| **Validation/Test Tools** | ARM TTK, what-if                           | `terraform validate`, `plan`, `tflint`, etc.            |
+| **Integration**           | Azure DevOps, GitHub Actions               | CI/CD tools, Terraform Cloud, GitHub, Jenkins           |
+| **Policy & Guardrails**   | Azure Policy, Blueprints                   | Supports Sentinel (via Terraform Cloud), Policy-as-Code |
+| **Extensibility**         | Supports linked templates and deployments  | Highly modular and supports custom providers            |
+| **Speed of Updates**      | Always aligned with latest Azure features  | May lag slightly behind new Azure resources             |

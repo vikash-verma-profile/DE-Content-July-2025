@@ -1,0 +1,6 @@
+https://estheranagu.medium.com/a-beginners-guide-to-azure-data-factory-adf-a3aa34a953d4
+https://medium.com/@mylearnnest07/mastering-azure-data-factory-the-ultimate-guide-to-etl-and-beyond-2415eb216945
+https://medium.com/@abhi.gautam/building-your-first-azure-data-factory-pipeline-a-beginners-guide-168b0a0a19b1
+https://medium.com/analytics-vidhya/a-simple-tutorial-on-azure-data-factory-e92b4a2c1b19
+https://jay75chauhan.medium.com/ci-cd-for-azure-data-factory-using-azure-devops-with-environment-specific-parameters-1b56c73eaefd
+https://adeniranolanrewaju.medium.com/introduction-to-azure-data-factory-creating-an-adf-pipeline-with-copy-data-tool-demo-fee4f0244195
